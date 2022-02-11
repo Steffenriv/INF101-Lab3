@@ -24,8 +24,9 @@ public class Ball {
 	/** The ball's position and speed in y direction. */
 	private Motion yMotion;
 	/** Number of steps taken */
-	private int steps = 0;
-
+	private int steps = 0 ;
+	/** Radius of the ball */
+	private int radius = 2;
 	/**
 	 * Create a new ball with position and velocity (0,0)
 	 * 
@@ -45,6 +46,8 @@ public class Ball {
 	 */
 	public double getX() {
 		// TODO
+		return xMotion.getPosition();
+
 	}
 
 	/**
@@ -52,13 +55,17 @@ public class Ball {
 	 */
 	public double getY() {
 		// TODO
+		return yMotion.getPosition();
 	}
 
 	/**
 	 * @return The ball's radius
 	 */
+
+	
 	public double getRadius() {
 		// TODO
+		return radius;
 	}
 
 	/**
@@ -66,6 +73,8 @@ public class Ball {
 	 */
 	public double getWidth() {
 		// TODO
+		double width = 2 * getRadius(); 
+		return width;
 	}
 
 	/**
@@ -73,13 +82,17 @@ public class Ball {
 	 */
 	public double getHeight() {
 		// TODO
+		double height = 2* getRadius();
+		return height;
 	}
+
 
 	/**
 	 * @return Paint/color for the ball
 	 */
 	public Paint getColor() {
 		// TODO
+		return Color.BLUE;
 	}
 
 	/**
@@ -104,6 +117,9 @@ public class Ball {
 	 */
 	public void moveTo(double newX, double newY) {
 		// TODO
+		double newX = 
+		double newY = 
+
 	}
 
 	/**
