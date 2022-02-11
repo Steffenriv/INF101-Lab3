@@ -26,7 +26,7 @@ public class Ball {
 	/** Number of steps taken */
 	private int steps = 0 ;
 	/** Radius of the ball */
-	private int radius = 2;
+	private double radius;
 	/**
 	 * Create a new ball with position and velocity (0,0)
 	 * 
@@ -38,7 +38,13 @@ public class Ball {
 	public Ball(Paint color, double radius) {
 		if (radius < 0)
 			throw new IllegalArgumentException("Radius should not be negative");
+		else {
+			this.radius = radius;
 
+			xMotion = new Motion();
+			yMotion = new Motion();
+
+		}
 	}
 
 	/**
@@ -92,7 +98,7 @@ public class Ball {
 	 */
 	public Paint getColor() {
 		// TODO
-		return Color.BLUE;
+		return color;
 	}
 
 	/**
@@ -117,9 +123,8 @@ public class Ball {
 	 */
 	public void moveTo(double newX, double newY) {
 		// TODO
-		double newX = 
-		double newY = 
-
+		xMotion.setPosition(newX);
+		yMotion.setPosition(newY);
 	}
 
 	/**
@@ -150,6 +155,9 @@ public class Ball {
 		// TODO
 		// Hint: examine which methods there are in the class Motion
 		// maybe you don't have to do as much as you think.
+		xMotion.move();
+		yMotion.move();
+		steps++;
 	}
 
 	/**
@@ -160,7 +168,21 @@ public class Ball {
 	 */
 	public Ball[] explode() {
 		// TODO
-		return null;
+
+		int nBalls = 8;
+		Ball[] explodedBalls = new Ball[nBalls];
+
+		for (int i = 0; i < nBalls; i++) {
+
+			Ball newBall= new Ball(this.color, this.radius/2);
+
+			newBall.moveTo(this.getY(), this.getX());
+			newBall.setSpeed(Math.random(),Math.random());
+
+			explodedBalls[i] = newBall;
+		}
+
+		return explodedBalls;
 	}
 
 	/**
@@ -173,6 +195,8 @@ public class Ball {
 	 */
 	public void setAcceleration(double xAcceleration, double yAcceleration) {
 		// TODO
+		xMotion.setAcceleration(xAcceleration);
+		yMotion.setAcceleration(yAcceleration);
 	}
 
 	/**
@@ -185,6 +209,8 @@ public class Ball {
 	 */
 	public void accelerate(double xAcceleration, double yAcceleration) {
 		// TODO
+		xMotion.setSpeed(xMotion.getSpeed() + xAcceleration);
+		yMotion.setSpeed(yMotion.getSpeed() + yAcceleration);
 	}
 
 	/**
@@ -193,6 +219,13 @@ public class Ball {
 	 */
 	public void halt() {
 		// TODO
+
+		xMotion.setSpeed(0);
+		yMotion.setSpeed(0);
+
+		xMotion.setAcceleration(0);
+		yMotion.setAcceleration(0);
+
 	}
 
 	/**

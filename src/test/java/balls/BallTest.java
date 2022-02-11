@@ -144,6 +144,7 @@ public class BallTest {
 		b.move();
 		assertEquals(x, b.getX());
 		assertEquals(y, b.getY());
+		
 	}
 
 	/**
